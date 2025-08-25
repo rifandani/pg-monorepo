@@ -1,0 +1,27 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
+  "extends": ["ultracite"],
+  "files": {
+    "includes": ["**", "!**/.cache.json", "!**/migrations", "!**/dist"]
+  },
+  "linter": {
+    "rules": {
+      "performance": {
+        "useTopLevelRegex": "off",
+        "noNamespaceImport": "off",
+        "noImgElement": "off"
+      },
+      "suspicious": {
+        "noConsole": "off"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off"
+      },
+      "style": {
+        "noExportedImports": "off",
+        "noNestedTernary": "off",
+        "noNonNullAssertion": "off"
+      }
+    }
+  }
+}
