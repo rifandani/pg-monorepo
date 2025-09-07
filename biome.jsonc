@@ -18,6 +18,7 @@
         "noSvgWithoutTitle": "off"
       },
       "style": {
+        "noMagicNumbers": "off",
         "noExportedImports": "off",
         "noNestedTernary": "off",
         "noNonNullAssertion": "off"

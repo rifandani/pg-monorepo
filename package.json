@@ -1,5 +1,5 @@
 {
-  "name": "be-monorepo",
+  "name": "pg-monorepo",
   "version": "1.0.0",
   "author": "Tri Rizeki Rifandani",
   "devDependencies": {
@@ -20,7 +20,7 @@
       "@commitlint/config-conventional"
     ]
   },
-  "description": "BE Monorepo Template",
+  "description": "Playground Monorepo",
   "engines": {
     "node": ">=24"
   },
@@ -39,7 +39,10 @@
     "lint-typecheck": "run-p lint hono:typecheck",
     "hono": "bun --elide-lines=0 --filter @workspace/hono",
     "hono:ci": "bun --filter @workspace/hono",
-    "hono:typecheck": "bun hono:ci typecheck"
+    "hono:typecheck": "bun hono:ci typecheck",
+    "oidc": "bun --filter @workspace/oidc",
+    "oidc:ci": "bun --filter @workspace/oidc",
+    "oidc:typecheck": "bun oidc:ci typecheck"
   },
   "trustedDependencies": [
     "@biomejs/biome",
