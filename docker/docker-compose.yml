@@ -1,6 +1,18 @@
-name: be-monorepo
+name: pg-monorepo
 
 services:
+  minio:
+    image: bitnami/minio:latest
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minio_root_user
+      MINIO_ROOT_PASSWORD: minio_root_password
+      MINIO_BROWSER: on
+    volumes:
+      - minio_data:/bitnami/minio/data
+
   redis_cache:
     image: redis:latest
     ports:
@@ -9,18 +21,19 @@ services:
       - redis_cache_data:/data
     restart: unless-stopped
 
-  postgres_db:
-    image: postgres:17
+  pgvector_db:
+    image: pgvector/pgvector:pg17 # PostgreSQL with pgvector support
     environment:
-      POSTGRES_DB: postgres_db
-      POSTGRES_USER: postgres_db
-      POSTGRES_PASSWORD: postgres_db
-    # DATABASE_URL === postgres://postgres_db:postgres_db@db:5432/postgres_db
+      POSTGRES_DB: pgvector_db
+      POSTGRES_USER: pgvector_db
+      POSTGRES_PASSWORD: pgvector_db
+    # DATABASE_URL === postgres://pgvector_db:pgvector_db@db:5432/pgvector_db
     ports:
       - "5432:5432"
     volumes:
-      - postgres_db_data:/var/lib/postgresql/data
-    restart: unless-stopped
+      - pgvector_db_data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql # init pgvector extension
+    restart: always
 
   otel_lgtm:
     image: docker.io/grafana/otel-lgtm:latest
@@ -41,5 +54,6 @@ services:
 
 # Stores data outside the container to ensure persistence
 volumes:
-  postgres_db_data:
+  minio_data:
   redis_cache_data: 
+  pgvector_db_data:

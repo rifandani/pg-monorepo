@@ -25,6 +25,42 @@
 - Run `bun <app_name> build` to build with development env
 - Run `bun lint-typecheck` for linting and type checking
 
+## 📂 File Storage
+
+We are using [@aws-sdk/client-s3](https://www.npmjs.com/package/@aws-sdk/client-s3) as our file storage client.
+
+### MinIO
+
+We are using [MinIO](https://min.io/) which is an object storage server, compatible with Amazon S3 cloud storage service.
+Run docker compose to start the [`bitnami/minio`](https://hub.docker.com/r/bitnami/minio) container.
+
+To access the MinIO browser, you can visit `http://localhost:9001/`.
+To login, use the following credentials that are defined in the `docker-compose.yml` file.
+
+## 📊 Observability
+
+We are using [OpenTelemetry](https://opentelemetry.io/) as our observability tool to collect metrics, traces, and logs.
+
+Guidelines:
+
+- Use `span.setAttributes` and `span.addEvent` most of the time, use `logger` only in places where you don't care about measuring the timing (e.g. global app error handler), or when you want to emphasize and save some important information / state changes.
+- When we pass in `experimental_telemetry.functionId` to the `ai` SDK v4, it's not used as the span name, but rather it will be set as span attributes `resource.name`.
+- Use logger from `@workspace/core/utils/logger` to normally `console.log` that works in browser and server.
+- Use logger from `@/core/utils/logger` to log telemetry data that works in server ONLY.
+- Do not log using `diag` from `@opentelemetry/api` because we only use it for internal otel logs.
+- Instrument server-side code only.
+
+### Grafana
+
+We are using [Grafana](https://grafana.com/) as our observability backend to display the traces, metrics, and logs.
+Run docker compose to start the [`grafana/otel-lgtm`](https://github.dev/grafana/docker-otel-lgtm/) container. This will spin up a OpenTelemetry backend including [Prometheus](https://grafana.com/docs/grafana/latest/datasources/prometheus/) (metrics database), [Tempo](https://grafana.com/docs/grafana/latest/datasources/tempo/) (traces database), [Loki](https://grafana.com/docs/grafana/latest/datasources/loki/) (logs database), and [Pyroscope](https://grafana.com/docs/grafana/latest/datasources/pyroscope/) (profiling database).
+
+To access the Grafana Dashboard for visualization, you can visit `http://localhost:3111`.
+To login, use the following credentials:
+
+- Username: `admin`
+- Password: `admin`
+
 ## 📱 Apps
 
 ### @workspace/oidc

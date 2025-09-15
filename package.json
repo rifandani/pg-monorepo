@@ -34,7 +34,10 @@
     "format": "ultracite format",
     "format:unsafe": "ultracite format --unsafe",
     "lint": "ultracite lint",
-    "lint-typecheck": "run-p lint oidc:typecheck",
+    "lint-typecheck": "run-p lint core:typecheck oidc:typecheck",
+    "core": "bun --filter @workspace/core",
+    "core:ci": "bun --filter @workspace/core",
+    "core:typecheck": "bun core:ci typecheck",
     "oidc": "bun --filter @workspace/oidc",
     "oidc:ci": "bun --filter @workspace/oidc",
     "oidc:typecheck": "bun oidc:ci typecheck"

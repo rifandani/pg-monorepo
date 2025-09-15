@@ -4,11 +4,18 @@
   "author": "Tri Rizeki Rifandani",
   "devDependencies": {
     "@types/node": "24.4.0",
+    "@types/pg": "8.15.5",
     "@workspace/typescript-config": "workspace:*",
+    "drizzle-kit": "0.31.4",
     "typescript": "5.9.2"
   },
   "dependencies": {
+    "@dotenvx/dotenvx": "1.49.0",
+    "drizzle-orm": "0.44.5",
+    "drizzle-seed": "0.3.1",
+    "drizzle-zod": "0.8.3",
     "ky": "1.10.0",
+    "pg": "8.16.3",
     "radashi": "12.6.2",
     "type-fest": "5.0.0",
     "zod": "4.1.8"
@@ -17,9 +24,18 @@
     "./apis/*": "./src/apis/*.ts",
     "./assets/*": "./src/assets/*",
     "./constants/*": "./src/constants/*.ts",
+    "./db/*": "./src/db/*.ts",
     "./services/*": "./src/services/*.ts",
     "./types/*": "./src/types/*.ts",
     "./utils/*": "./src/utils/*.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "db:pull": "dotenvx run --env-file=.env -- drizzle-kit pull",
+    "db:push": "dotenvx run --env-file=.env -- drizzle-kit push --verbose --strict",
+    "db:gen": "dotenvx run --env-file=.env -- drizzle-kit generate",
+    "db:migrate": "dotenvx run --env-file=.env -- drizzle-kit migrate",
+    "db:studio": "dotenvx run --env-file=.env -- drizzle-kit studio --port 3003 --verbose"
   },
   "description": "Shared core module for monorepo",
   "license": "MIT",
