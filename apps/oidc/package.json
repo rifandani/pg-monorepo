@@ -33,7 +33,7 @@
     "@types/bun": "1.2.22",
     "@types/cors": "2.8.19",
     "@types/express": "5.0.3",
-    "@types/node": "24.4.0",
+    "@types/node": "24.6.1",
     "@types/oidc-provider": "9.5.0",
     "@workspace/typescript-config": "workspace:*",
     "tsx": "4.20.5",
