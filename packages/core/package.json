@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Tri Rizeki Rifandani",
   "devDependencies": {
-    "@types/node": "24.4.0",
+    "@types/node": "24.6.1",
     "@types/pg": "8.15.5",
     "@workspace/typescript-config": "workspace:*",
     "drizzle-kit": "0.31.4",
