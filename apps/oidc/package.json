@@ -27,7 +27,7 @@
     "radashi": "12.6.2",
     "ts-pattern": "5.8.0",
     "type-fest": "5.0.0",
-    "zod": "4.1.8"
+    "zod": "4.1.11"
   },
   "devDependencies": {
     "@types/bun": "1.2.22",
