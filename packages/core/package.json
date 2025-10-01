@@ -7,7 +7,7 @@
     "@types/pg": "8.15.5",
     "@workspace/typescript-config": "workspace:*",
     "drizzle-kit": "0.31.4",
-    "typescript": "5.9.2"
+    "typescript": "5.9.3"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "1.49.0",
