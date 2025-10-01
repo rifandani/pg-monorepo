@@ -10,7 +10,7 @@
     "typescript": "5.9.2"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "1.49.0",
+    "@dotenvx/dotenvx": "1.51.0",
     "drizzle-orm": "0.44.5",
     "drizzle-seed": "0.3.1",
     "drizzle-zod": "0.8.3",

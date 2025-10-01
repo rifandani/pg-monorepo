@@ -15,7 +15,7 @@
     "node:start": "dotenvx run --env-file=.env -- node ./dist/node.js"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "1.49.0",
+    "@dotenvx/dotenvx": "1.51.0",
     "@t3-oss/env-core": "0.13.8",
     "@workspace/core": "workspace:*",
     "cors": "2.8.5",
